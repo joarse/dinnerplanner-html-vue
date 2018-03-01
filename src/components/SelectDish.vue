@@ -1,7 +1,7 @@
 <template>
   <div class="SelectDish">
     <h2>This is the Select Dish screen</h2>
-    <!-- Passes the model as a prop to the sidebar -->
+    <!-- Pass the model as a prop to the sidebar -->
     <sidebar :model="this.model"/>
     <dishes/>
   </div>
