@@ -1,21 +1,41 @@
-# dinnerplanner-html-vue
+# Dinner Planner Vue
 
-> Dinner Planner startup code for Vue
+## How to get started
 
-## Build Setup
+Since modern frameworks use some advanced features like compiling the templates and source code in pure
+JavaScript and dynamically loading the needed content, you cannot anymore just open the HTML file 
+in the browser. Instead, you will need a local webserver that will serve your app. Follow the instructions 
+bellow to install all the neded dependencies (e.g. the framework libraries) and the development webserver.
 
-``` bash
-# install dependencies
-npm install
+1. First, make sure that you have npm installed on your system (follow the instructions
+   at [Installing Node](https://docs.npmjs.com/getting-started/installing-node). The computers in the lab rooms
+   should already have it, you will just need to do `module add node` to activate it (every time
+   you start the terminal).
 
-# serve with hot reload at localhost:8080
-npm run dev
+2. Run `npm install` through the terminal in the root of the repository. Let it
+   install all the dependencies.
 
-# build for production with minification
-npm run build
+3. Run `npm start` through the terminal. This will start the webserver and the application should pop up in your
+   browser ready for use. Alternatively you can open in through [http://localhost:8080]. Whenever you make changes in your code and save, the browser will update automatically, so you don't have to click refresh anymore.
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
+## Understanding the startup code
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+* `public/index.html` - this is the static html file, and as opposed to previous labs, we don't put view's HTML here. It should only contain HTML that's shared among all the views (e.g. header, footer)
+* `src/data/DinnerModel.js` - example of dinner model with number of guests, getAllDishes function implemented using `fetch()` and Observer pattern. You can copy other functions from your original model (and modify as needed to make it work with ES6 JavaScript class)
+* `src/main.js` - this is where Vue is started. You will normally not need to modify this file, but you can check it to see how React is started and how it calls the App - which is our root component.
+* `src/App.vue` - root component you can modify it's HTML template
+* `src/router.js` - this is where routes for the Router are defined, i.e. how url address (e.g. /search, /dish/ID) map to specific component
+* `src/component/` - contain the `.vue` file for each component. You should create your own components roughly corresponding to your views from previous labs.
+
+Check the components and see how they work. There are additional comments in the code.
+
+## What you need to do
+
+* reimplement the missing views following Vue practices
+* use [Router](https://router.vuejs.org/en/essentials/getting-started.html) to map different url address (e.g. /search, /dish/ID) to specific components (the startup code already does that for welcome screen and select dish screen)
+* implement cookies or localStorage so that the numberOfGuests and menu are persisted on the page reload
+
+
+## Credits
+
+* Michel Tabari for creating the startup code

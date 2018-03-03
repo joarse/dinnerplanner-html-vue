@@ -1,5 +1,5 @@
 <template>
-  <div class="Welcome">
+  <div class="welcome">
     <p>
       {{ msg }}
     </p>
@@ -12,7 +12,6 @@
 
 <script>
   export default {
-    name: 'Welcome',
     data() {
       return {
         msg: 'Welcome to the dinner planner Vue Startup code!'
