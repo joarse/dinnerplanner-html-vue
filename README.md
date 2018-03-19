@@ -22,7 +22,7 @@ bellow to install all the neded dependencies (e.g. the framework libraries) and 
 
 * `public/index.html` - this is the static html file, and as opposed to previous labs, we don't put view's HTML here. It should only contain HTML that's shared among all the views (e.g. header, footer)
 * `src/data/DinnerModel.js` - example of dinner model with number of guests, getAllDishes function implemented using `fetch()` and Observer pattern. You can copy other functions from your original model (and modify as needed to make it work with ES6 JavaScript class)
-* `src/main.js` - this is where Vue is started. You will normally not need to modify this file, but you can check it to see how React is started and how it calls the App - which is our root component.
+* `src/main.js` - this is where Vue is started. You will normally not need to modify this file, but you can check it to see how Vue is started and how it calls the App - which is our root component.
 * `src/App.vue` - root component you can modify it's HTML template
 * `src/router.js` - this is where routes for the Router are defined, i.e. how url address (e.g. /search, /dish/ID) map to specific component
 * `src/component/` - contain the `.vue` file for each component. You should create your own components roughly corresponding to your views from previous labs.
