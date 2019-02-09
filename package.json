@@ -20,7 +20,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0-beta.2",
     "@vue/cli-plugin-eslint": "^3.0.0-beta.2",
-    "@vue/cli-service": "^3.0.0-beta.2",
+    "@vue/cli-service": "^3.4.0",
     "vue-template-compiler": "^2.5.13"
   },
   "babel": {
@@ -33,7 +33,10 @@
     "extends": [
       "plugin:vue/essential",
       "eslint:recommended"
-    ]
+    ],
+    "rules": {
+      "no-console": 0
+    }
   },
   "postcss": {
     "plugins": {
