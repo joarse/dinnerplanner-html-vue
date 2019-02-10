@@ -37,9 +37,7 @@ class DinnerModel extends ObservableModel {
    */
   getAllDishes() {
     const url = `${BASE_URL}/recipes/search`;
-    return fetch(url, httpOptions)
-      .then(this.processResponse)
-      .catch(this.handleError);
+    return fetch(url, httpOptions).then(this.processResponse);
   }
 
   processResponse(response) {
@@ -47,16 +45,6 @@ class DinnerModel extends ObservableModel {
       return response.json();
     }
     throw response;
-  }
-
-  handleError(error) {
-    if (error.json) {
-      error.json().then(error => {
-        console.error("getAllDishes() API Error:", error.message || error);
-      });
-    } else {
-      console.error("getAllDishes() API Error:", error.message || error);
-    }
   }
 }
 
