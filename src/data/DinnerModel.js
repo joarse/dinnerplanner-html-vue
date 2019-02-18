@@ -2,7 +2,7 @@ import ObservableModel from "./ObservableModel";
 
 const BASE_URL = "http://sunset.nada.kth.se:8080/iprog/group/49";
 const httpOptions = {
-  headers: { "X-Mashape-Key": "YOUR_API_KEY" }
+  headers: { "X-Mashape-Key": "" }
 };
 
 class DinnerModel extends ObservableModel {
@@ -25,7 +25,11 @@ class DinnerModel extends ObservableModel {
    * @param {number} num
    */
   setNumberOfGuests(num) {
-    this._numberOfGuests = num;
+    if (num > 0) {
+      this._numberOfGuests = num;
+    } else {
+      this._numberOfGuests = 1;
+    }
     this.notifyObservers();
   }
 
