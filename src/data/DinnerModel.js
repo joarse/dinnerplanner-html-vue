@@ -73,7 +73,7 @@ class DinnerModel extends ObservableModel {
     const url = `${this.BASE_URL}/recipes/${id}/information`;
 
     return fetch(`${url}?includeNutrition=false`, this.httpOptions)
-      .the(response => this.processResponse(response))
+      .then(response => this.processResponse(response))
       .catch(e => {
         alert("There's something wrong while getting detailed info of a dish");
         console.log(e);
