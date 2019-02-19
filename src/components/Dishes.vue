@@ -6,6 +6,9 @@
       <b v-else-if='status === "ERROR"'>Failed to load data, please try again</b>
       <li v-for="dish in dishes" :id="dish.id" :key="dish.id">
         {{ dish.title }}
+        <div :id="dish.id" @click="selectDish">
+            <img v-bind:src="'https://spoonacular.com/recipeImages/' + dish.image" />
+        </div>
       </li>
     </ul>
   </div>
@@ -35,6 +38,19 @@
         status: "LOADING",
         dishes: []
       }
+    },
+
+    methods: {
+      selectDish(event) {
+        console.log(event.currentTarget.id);
+      }
     }
   }
 </script>
+
+<style>
+  img {
+    width: 3cm;
+    height: 3cm;
+  }
+</style>
