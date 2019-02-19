@@ -15,7 +15,7 @@
   </div>
 </template>
 
-<script>  
+<script>
 export default {
   props: ["model"],
   // this methods is called by React lifecycle when the
@@ -31,10 +31,10 @@ export default {
   },
 
   // we define and initalise the data we want to use and modify in the component
-    data() {
-      if (localStorage.numberOfGuests) {
-        this.model.setNumberOfGuests(localStorage.numberOfGuests);
-      }
+  data() {
+    if (localStorage.numberOfGuests) {
+      this.model.setNumberOfGuests(localStorage.numberOfGuests);
+    }
     return {
       numberOfGuests: this.model.getNumberOfGuests()
     };
