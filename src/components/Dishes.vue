@@ -6,9 +6,11 @@
       <b v-else-if='status === "ERROR"'>Failed to load data, please try again</b>
       <li v-for="dish in dishes" :id="dish.id" :key="dish.id">
         {{ dish.title }}
-        <div :id="dish.id" @click="selectDish">
+        <router-link to="/detail">
+          <div :id="dish.id" @click="selectDish">
             <img v-bind:src="'https://spoonacular.com/recipeImages/' + dish.image" />
-        </div>
+          </div>
+        </router-link>
       </li>
     </ul>
   </div>
@@ -42,7 +44,17 @@
 
     methods: {
       selectDish(event) {
-        console.log(event.currentTarget.id);
+        const id = event.currentTarget.id;
+        console.log(id);
+        modelInstance.getDetailedInfo(id)
+        .then(ret => {
+          this.status = "CLICKED";
+          console.log(ret);
+        })
+        .catch(() => {
+          this.status = "ERROR"
+          alert("There is problem about fetching details!");
+        });
       }
     }
   }
