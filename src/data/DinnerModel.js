@@ -7,6 +7,7 @@ class DinnerModel extends ObservableModel {
     super();
     this._numberOfGuests = 4;
     this.getNumberOfGuests();
+    this.query = "";
 
     this.apiKey = "";
     this.BASE_URL = "http://sunset.nada.kth.se:8080/iprog/group/49";
@@ -33,6 +34,15 @@ class DinnerModel extends ObservableModel {
     } else {
       this._numberOfGuests = 1;
     }
+    this.notifyObservers();
+  }
+
+  getQuery() {
+    return this.query;
+  }
+
+  setQuery(searchInput) {
+    this.query = searchInput
     this.notifyObservers();
   }
 
