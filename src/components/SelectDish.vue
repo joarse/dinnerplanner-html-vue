@@ -4,12 +4,27 @@
     <!-- We pass the model as property to the Sidebar component -->
     <input type="text"
            :value="text"
-           placeholder="edit me"
-           @input="search">
-    <button @click="search">
-      SEARCH
-    </button>
-    <p>Message is: {{ text }}</p>
+           placeholder="Enter key words"
+           @input="searchText">
+
+    <button @click="search">SEARCH</button>
+
+    <select v-model ="selected"
+            @change="searchType">
+      <option disabled value=""> Select a dish type</option>
+      <option> Main course</option>
+      <option>Appetizer</option>
+      <option>Side dish</option>
+      <option>Dessert</option>
+      <option>Salad</option>
+      <option>Bread</option>
+      <option>Breakfast</option>
+      <option>Soup</option>
+      <option>Beverage</option>
+      <option>Sauce</option>
+      <option>Drinks</option>
+    </select>
+    <p>Message is: {{ text }} and {{ selected }}</p>
 
     <sidebar :model="this.model" />
     <dishes />
@@ -33,16 +48,27 @@
     },
     data() {
       return {
-        text: this.model.getQuery()
+        text: this.model.getQuery(),
+        selected: this.model.getDishType()
       };
     },
 
     methods: {
-      search(e) {
+      searchText(e) {
         this.model.setQuery(e.target.value);
       }, 
+      searchType(e) {
+        this.model.setDishType(e.target.value);
+      },
+      search() {
+        this.model.setQuery(this.text);
+        this.model.setDishType(this.selected);
+        // Call api form model when the button is clicked after this
+    
+      },
       update() {
         this.text = this.model.getQuery();
+        this.selected = this.model.getDishType();
       }
     }
   }
