@@ -32,9 +32,6 @@
       'dishes': Dishes
     },
     data() {
-      if (localStorage.query) {
-        this.model.setQuery(localStorage.query);
-      }
       return {
         text: this.model.getQuery()
       };
@@ -43,7 +40,6 @@
     methods: {
       search(e) {
         this.model.setQuery(e.target.value);
-        localStorage.query = e.target.value;
       }, 
       update() {
         this.text = this.model.getQuery();

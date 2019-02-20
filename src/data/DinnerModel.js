@@ -21,6 +21,9 @@ class DinnerModel extends ObservableModel {
    * @returns {number}
    */
   getNumberOfGuests() {
+    if (localStorage.numberOfGuests) {
+      this._numberOfGuests = localStorage.numberOfGuests;
+    }
     return this._numberOfGuests;
   }
 
@@ -34,15 +37,20 @@ class DinnerModel extends ObservableModel {
     } else {
       this._numberOfGuests = 1;
     }
+    localStorage.numberOfGuests = this._numberOfGuests;
     this.notifyObservers();
   }
 
   getQuery() {
+    if (localStorage.query) {
+      this.query = localStorage.query;
+    }
     return this.query;
   }
 
   setQuery(searchInput) {
-    this.query = searchInput
+    this.query = searchInput;
+    localStorage.query = searchInput;
     this.notifyObservers();
   }
 
