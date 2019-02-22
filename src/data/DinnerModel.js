@@ -82,7 +82,7 @@ class DinnerModel extends ObservableModel {
    * @returns {Promise<any>}
    */
   getAllDishes() {
-    const url = `${this.BASE_URL}/recipes/search`;
+    const url = `${this.BASE_URL}/recipes/search?query=${this.query}&type=${this.dishType}`;
     return fetch(url, this.httpOptions)
       .then(response => this.processResponse(response));
   }
