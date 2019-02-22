@@ -55,7 +55,7 @@
           this.status = "ERROR"
           alert("There is problem about fetching details!");
         });
-      }
+      },
     }
   }
 </script>
