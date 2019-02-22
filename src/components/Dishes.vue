@@ -2,7 +2,9 @@
   <div class="Dishes">
     <h3>Dishes</h3>
     <ul>
+      
       <em v-if='status === "LOADING"'>Loading...</em>
+      <b v-if='dishes.length === 0 & status == "LOADED"'> Keywords and dish type do not match anything in the database</b>
       <b v-else-if='status === "ERROR"'>Failed to load data, please try again</b>
       <li v-for="dish in dishes" :id="dish.id" :key="dish.id">
         {{ dish.title }}
