@@ -6,10 +6,9 @@
            :value="text"
            placeholder="Enter key words"
            @input="searchText">
+      <button @click="search">SEARCH</button>
 
-    <button @click="search">SEARCH</button>
-
-    <select v-model ="selected"
+    <select v-model="selected"
             @change="searchType">
       <option disabled value=""> Select a dish type</option>
       <option> Main course</option>
@@ -63,8 +62,8 @@
       search() {
         this.model.setQuery(this.text);
         this.model.setDishType(this.selected);
-        // Call api form model when the button is clicked after this
-    
+        // Emit event so model fetches new data
+        // and dishes gets updated
       },
       update() {
         this.text = this.model.getQuery();
