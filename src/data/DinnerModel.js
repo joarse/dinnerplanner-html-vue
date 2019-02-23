@@ -9,6 +9,7 @@ class DinnerModel extends ObservableModel {
     this.getNumberOfGuests();
     this._query = "";
     this._dishType = "";
+    this._selectedDishID = -1;
 
     this.apiKey = "";
     this.BASE_URL = "http://sunset.nada.kth.se:8080/iprog/group/49";
@@ -81,6 +82,27 @@ class DinnerModel extends ObservableModel {
   setDishType(dishTypeInput) {
     this._dishType = dishTypeInput;
     localStorage.dishType = dishTypeInput;
+    this.notifyObservers();
+  }
+
+  /**
+   * Get the selected dish id users have chosen
+   * @returns {string}
+   */
+  getSelectedDishID() {
+    if (localStorage.selectedDishID) {
+      this._selectedDishID = localStorage.selectedDishID;
+    }
+    return this._selectedDishID;
+  }
+
+  /**
+   * Set the selected dish id
+   * @param {number} id
+   */
+  setSelectedDishID(id) {
+    this._selectedDishID = id;
+    localStorage.selectedDishID = id;
     this.notifyObservers();
   }
 
