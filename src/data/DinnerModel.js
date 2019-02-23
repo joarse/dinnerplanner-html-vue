@@ -7,8 +7,8 @@ class DinnerModel extends ObservableModel {
     super();
     this._numberOfGuests = 4;
     this.getNumberOfGuests();
-    this.query = "";
-    this.dishType = "";
+    this._query = "";
+    this._dishType = "";
 
     this.apiKey = "";
     this.BASE_URL = "http://sunset.nada.kth.se:8080/iprog/group/49";
@@ -42,28 +42,44 @@ class DinnerModel extends ObservableModel {
     this.notifyObservers();
   }
 
+  /**
+   * Get the query users have typed
+   * @returns {string}
+   */
   getQuery() {
     if (localStorage.query) {
-      this.query = localStorage.query;
+      this._query = localStorage.query;
     }
-    return this.query;
+    return this._query;
   }
 
+  /**
+   * Set the query string
+   * @param {string} searchInput
+   */
   setQuery(searchInput) {
-    this.query = searchInput;
+    this._query = searchInput;
     localStorage.query = searchInput;
     this.notifyObservers();
   }
 
+  /**
+   * Get the type of dish users have typed
+   * @returns {string}
+   */
   getDishType() {
     if (localStorage.dishType) {
-      this.dishType = localStorage.dishType;
+      this._dishType = localStorage.dishType;
     }
-    return this.dishType;
+    return this._dishType;
   }
 
+  /**
+   * Set the type of dish
+   * @param {string} dishTypeInput
+   */
   setDishType(dishTypeInput) {
-    this.dishType = dishTypeInput;
+    this._dishType = dishTypeInput;
     localStorage.dishType = dishTypeInput;
     this.notifyObservers();
   }
@@ -82,7 +98,7 @@ class DinnerModel extends ObservableModel {
    * @returns {Promise<any>}
    */
   getAllDishes() {
-    const url = `${this.BASE_URL}/recipes/search?query=${this.query}&type=${this.dishType}`;
+    const url = `${this.BASE_URL}/recipes/search?query=${this.getQuery()}&type=${this.getDishType()}`;
     return fetch(url, this.httpOptions)
       .then(response => this.processResponse(response));
   }
