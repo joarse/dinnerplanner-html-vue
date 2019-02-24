@@ -48,6 +48,7 @@
       selectDish(event) {
         const id = event.currentTarget.id;
         console.log(id);
+        modelInstance.setSelectedDishID(id);
         modelInstance.getDetailedInfo(id)
         .then(ret => {
           this.status = "CLICKED";
