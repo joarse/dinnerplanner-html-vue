@@ -11,6 +11,9 @@
       {{ingredient.name}} {{ingredient.amount}} {{ingredient.unit}} {{1}} SEK
   
     </li>
+    <router-link  to="/search">
+      <button @click="add"> ADD TO MENU</button>
+    </router-link>
   </div>
 </template>
 
@@ -41,6 +44,9 @@
       }
     },
     methods: {
+      add() {
+        modelInstance.addDishToMenu(this.dish);
+      }
     }
   }
 </script>
