@@ -48,7 +48,7 @@
     methods: {
       selectDish(event) {
         const id = event.currentTarget.id;
-        console.log(id);
+        console.log(`shown in dishes.vue, id: {$id}`);
         this.model.setSelectedDishID(id);
         this.model.getDetailedInfo(id)
         .then(ret => {
@@ -56,9 +56,10 @@
           console.log(ret);
           this.model.setSelectedDishID(id);
         })
-        .catch(() => {
+        .catch((e) => {
           this.status = "ERROR"
           alert("There is problem about fetching details!");
+          console.log(e);
         });
       },
     }
