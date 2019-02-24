@@ -1,7 +1,12 @@
 <template>
   <div class="print">
     <h3>print</h3>
-
+    <div>
+      dinner for {{ numberOfGuests }}
+      <router-link to="/search">
+        <button>Go back to the menu</button>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -25,23 +30,18 @@
     },
     mounted() {
       this.numberOfGuests = this.model.getNumberOfGuests();
-      const dish = this.model.getMenu();
-      console.log(dish.id);
-      this.menu.push(dish);
+      // TODO: we should bind the menu here;
     },
     data() {
       return {
         numberOfGuests: this.model.getNumberOfGuests(),
-        menu: [] // dont know which data structure this should be
+        menu: this.model.getMenu()
       };
     },
     methods: {
       update() {
-        this.numberOfGuests = this.model.getNumberOfGuests();
-        const dish = this.model.getMenu();
-        console.log(dish.id);
-        this.menu.push(dish);
-        // update the menu here
+        // we should just re-read the menu from model here
+        this.menu = this.model.getMenu();
       },
     }
   }
