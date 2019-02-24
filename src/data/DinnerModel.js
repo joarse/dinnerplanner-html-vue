@@ -10,7 +10,7 @@ class DinnerModel extends ObservableModel {
     this._query = "";
     this._dishType = "";
     this._selectedDishID = -1;
-
+    this.menu = []; // unsure about which data structure we should use
     this.apiKey = "";
     this.BASE_URL = "http://sunset.nada.kth.se:8080/iprog/group/49";
     this.httpOptions = {
@@ -139,7 +139,18 @@ class DinnerModel extends ObservableModel {
         console.log(e);
       });
   }
+
+  addDishToMenu(dish) {
+    this.menu.push(dish);
+    this.notifyObservers();
+  } 
+
+  getMenu() {
+    return this.menu;
+  }
 }
+
+
 
 // Export an instance of DinnerModel
 const modelInstance = new DinnerModel();
