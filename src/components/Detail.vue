@@ -9,7 +9,7 @@
       {{ingredient.name}} {{ingredient.amount}} {{ingredient.unit}} {{1}} SEK
     </li>
     <router-link to="/search">
-      <button @click="add"> ADD TO MENU</button>
+      <button @click="add" v-if="status == 'LOADED'">ADD TO MENU</button>
     </router-link>
   </div>
 </template>
