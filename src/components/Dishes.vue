@@ -48,7 +48,7 @@
     methods: {
       selectDish(event) {
         const id = event.currentTarget.id;
-        console.log(`shown in dishes.vue, id: {$id}`);
+        console.log(`shown in dishes.vue, id: ${id}`);
         this.model.setSelectedDishID(id);
         this.model.getDetailedInfo(id)
         .then(ret => {
