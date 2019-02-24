@@ -21,16 +21,17 @@
 <script>
   // Alternative to passing the moderl as the component property,
   // we can import the model instance directly
-  import modelInstance from "../data/DinnerModel";
+  // import modelInstance from "../data/DinnerModel";
 
   export default {
+    props: ["model"],
     // this methods is called by Vue lifecycle when the
     // component is actually shown to the user (mounted to DOM)
     // that's a good place to call the API and get the data
     mounted() {
       // when data is retrieved we update it's properties
       // this will cause the component to re-render
-      modelInstance.getAllDishes().then(dishes => {
+      this.model.getAllDishes().then(dishes => {
         this.status = "LOADED"
         this.dishes = dishes.results
       }).catch(() => {
@@ -48,12 +49,12 @@
       selectDish(event) {
         const id = event.currentTarget.id;
         console.log(id);
-        modelInstance.setSelectedDishID(id);
-        modelInstance.getDetailedInfo(id)
+        this.model.setSelectedDishID(id);
+        this.model.getDetailedInfo(id)
         .then(ret => {
           this.status = "CLICKED";
           console.log(ret);
-          modelInstance.setSelectedDishID(id);
+          this.model.setSelectedDishID(id);
         })
         .catch(() => {
           this.status = "ERROR"

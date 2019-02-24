@@ -26,7 +26,7 @@
     <p>Message is: {{ text }} and {{ selected }}</p>
 
     <sidebar :model="this.model" />
-    <dishes />
+    <dishes :model="this.model" />
   </div>
 </template>
 
