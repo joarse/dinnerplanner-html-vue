@@ -12,6 +12,10 @@
       <br>
       Total number of guests: {{ numberOfGuests }}
     </p>
+    {{menu}}
+   <li v-for ="dish in menu">
+     dish.title
+   </li>
   </div>
 </template>
 
@@ -33,7 +37,8 @@ export default {
   // we define and initalise the data we want to use and modify in the component
   data() {
     return {
-      numberOfGuests: this.model.getNumberOfGuests()
+      numberOfGuests: this.model.getNumberOfGuests(),
+      menu: {} // dont know which data structure this should be
     };
   },
 
@@ -42,6 +47,7 @@ export default {
     // the compoented which will cause the component to re-render
     update() {
       this.numberOfGuests = this.model.getNumberOfGuests();
+      // update the menu here
     },
 
     // our handler for the input's on change event
