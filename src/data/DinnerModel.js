@@ -166,10 +166,6 @@ class DinnerModel extends ObservableModel {
         console.log(e);
       });
   }
-
-  getMenu() {
-    return this.menu;
-  }
 }
 
 
