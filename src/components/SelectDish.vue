@@ -11,7 +11,7 @@
     <select v-model="selected"
             @change="searchType">
       <option disabled value=""> Select a dish type</option>
-      <option> Main course</option>
+      <option>Main course</option>
       <option>Appetizer</option>
       <option>Side dish</option>
       <option>Dessert</option>
@@ -55,7 +55,7 @@
     methods: {
       searchText(e) {
         this.model.setQuery(e.target.value);
-      }, 
+      },
       searchType(e) {
         this.model.setDishType(e.target.value);
       },

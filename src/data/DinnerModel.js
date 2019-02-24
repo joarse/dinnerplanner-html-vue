@@ -12,6 +12,7 @@ class DinnerModel extends ObservableModel {
     this._selectedDishID = -1;
     this.menu = {}; // unsure about which data structure we should use
     this.apiKey = "";
+
     this.BASE_URL = "http://sunset.nada.kth.se:8080/iprog/group/49";
     this.httpOptions = {
       headers: { "X-Mashape-Key": this.apiKey }
@@ -142,7 +143,7 @@ class DinnerModel extends ObservableModel {
 
   addDishToMenu(dish) {
     this.menu[dish.id] = dish;
-  } 
+  }
 
   getMenu() {
     return this.menu;
