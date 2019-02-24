@@ -1,14 +1,20 @@
 <template>
   <div class="overview">
     <h3>Overview</h3>
-    dinner for {{numberOfGuests}}
-    <li v-for="dish in menu">
-      <p v-for="thing in dish">
-        {{thing.title}}
+    <div>
+      dinner for {{ numberOfGuests }}
+      <router-link to="/search">
+        <button>Go back to the menu</button>
+      </router-link>
+    </div>
+
+    <li v-for="dish in menu" :key="dish.id">
+      <p v-for="thing in dish" :key="thing.id">
+        {{ thing.title }}
       </p>
     </li>
     <router-link to="/print">
-      <button> PRINT OUT MENU</button>
+      <button>PRINT OUT MENU</button>
     </router-link>
   </div>
 </template>
@@ -16,7 +22,7 @@
 <script>
   // Alternative to passing the moderl as the component property,
   // we can import the model instance directly
-  import modelInstance from "../data/DinnerModel";
+  // import modelInstance from "../data/DinnerModel";
 
   export default {
     props: ["model"],
@@ -31,25 +37,23 @@
     beforeDestroy() {
       this.model.removeObserver(this);
     },
+
     mounted() {
       this.numberOfGuests = this.model.getNumberOfGuests();
-      const dish = this.model.getMenu();
-      console.log(dish.id);
-      this.menu.push(dish);
+      // TODO: we should bind the menu here;
     },
+
     data() {
       return {
         numberOfGuests: this.model.getNumberOfGuests(),
-        menu: [] // dont know which data structure this should be
+        menu: this.model.getMenu()
       };
     },
+
     methods: {
       update() {
-        this.numberOfGuests = this.model.getNumberOfGuests();
-        const dish = this.model.getMenu();
-        console.log(dish.id);
-        this.menu.push(dish);
-        // update the menu here
+        // we should just re-read the menu from model here
+        this.menu = this.model.getMenu();
       },
     }
   }
