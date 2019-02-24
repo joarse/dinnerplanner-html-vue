@@ -3,7 +3,7 @@
     <h2>This is the dish details screen</h2>
     <!-- We pass the model as property to the Sidebar component -->
     <sidebar :model="this.model"/>
-    <detail />
+    <detail :model="this.model" />
   </div>
 </template>
 

@@ -16,34 +16,55 @@
 </template>
 
 <script>
+  /***
+   * If we bind the model in the router with `props`, we don't need to import the actual file from relateive path
+   */
   // Alternative to passing the moderl as the component property,
   // we can import the model instance directly
-  import modelInstance from "../data/DinnerModel";
+  // import modelInstance from "../data/DinnerModel";
 
   export default {
+    props: ["model"],
+    // this methods is called by React lifecycle when the
+    // component is created that's a good place to setup model observer
+    created() {
+      this.model.addObserver(this);
+    },
+
+    // this is called when component is removed destroyed
+    // good place to remove observer
+    beforeDestroy() {
+      this.model.removeObserver(this);
+    },
+
     mounted() {
-      this.id = modelInstance.getSelectedDishID();
+      this.id = this.model.getSelectedDishID();
       console.log(this.id);
       // when data is retrieved we update it's properties
       // this will cause the component to re-render
-      modelInstance.getDetailedInfo(this.id).then(dish => {
+      this.model.getDetailedInfo(this.id).then(dish => {
         this.status = "LOADED"
         this.dish = dish
       }).catch(() => {
         this.status = "ERROR"
       })
     },
+
     data() {
       return {
         status: "LOADING",
-        id: modelInstance.getSelectedDishID(),
+        id: this.model.getSelectedDishID(),
         dish: [],
-        text: modelInstance.getNumberOfGuests(),
+        text: this.model.getNumberOfGuests(),
       }
     },
+
     methods: {
+      update() {
+
+      },
       add() {
-        modelInstance.addDishToMenu(this.dish);
+        this.model.addDishToMenu(this.dish);
       }
     }
   }
