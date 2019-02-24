@@ -10,9 +10,9 @@ class DinnerModel extends ObservableModel {
     this._query = "";
     this._dishType = "";
     this._selectedDishID = -1;
-    this.menu = {}; // unsure about which data structure we should use
-    this.apiKey = "";
+    this._menu = {}; // unsure about which data structure we should use
 
+    this.apiKey = "";
     this.BASE_URL = "http://sunset.nada.kth.se:8080/iprog/group/49";
     this.httpOptions = {
       headers: { "X-Mashape-Key": this.apiKey }
@@ -41,7 +41,7 @@ class DinnerModel extends ObservableModel {
       this._numberOfGuests = 1;
     }
     localStorage.numberOfGuests = this._numberOfGuests;
-    this.notifyObservers();
+    this.notifyObservers("setNumberOfGuests");
   }
 
   /**
@@ -62,7 +62,7 @@ class DinnerModel extends ObservableModel {
   setQuery(searchInput) {
     this._query = searchInput;
     localStorage.query = searchInput;
-    this.notifyObservers();
+    this.notifyObservers("setQuery");
   }
 
   /**
@@ -83,7 +83,7 @@ class DinnerModel extends ObservableModel {
   setDishType(dishTypeInput) {
     this._dishType = dishTypeInput;
     localStorage.dishType = dishTypeInput;
-    this.notifyObservers();
+    this.notifyObservers("setDishType");
   }
 
   /**
@@ -104,7 +104,33 @@ class DinnerModel extends ObservableModel {
   setSelectedDishID(id) {
     this._selectedDishID = id;
     localStorage.selectedDishID = id;
-    this.notifyObservers();
+    this.notifyObservers("setSelectedDishID");
+  }
+
+  /**
+   * Add dish to menu
+   * @params {dish object}
+   */
+  addDishToMenu(dish) {
+    this._menu[dish.id] = dish;
+    this.notifyObservers("addDishToMenu");
+  }
+
+  /**
+   * Remove dish from menu
+   * @param {number} id
+   */
+  removeDishFromMenu(id) {
+    delete this._menu[id];
+    this.notifyObservers("removeDishFromMenu");
+  }
+
+  /**
+   * Get the menu
+   * @returns {object}
+   */
+  getMenu() {
+    return this._menu;
   }
 
   // API methods
@@ -139,10 +165,6 @@ class DinnerModel extends ObservableModel {
         alert("There's something wrong while getting detailed info of a dish");
         console.log(e);
       });
-  }
-
-  addDishToMenu(dish) {
-    this.menu[dish.id] = dish;
   }
 
   getMenu() {
