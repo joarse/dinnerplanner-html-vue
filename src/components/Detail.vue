@@ -1,15 +1,13 @@
 <template>
   <div class="Detail">
     <h3>Details</h3>
-    <p>
-      {{ dish.title }}
-    </p>
+    <router-link to="/search">
+      <button>Go back to the menu</button>
+    </router-link>
+    <p>{{dish.title}}</p>
     <p>{{dish.id}} </p>
-    <p>{{dish.amount}}</p>
-    <p>{{dish.price}}</p>
-    <li v-for="ingredient in dish.extendedIngredients">
+    <li v-for="ingredient in dish.extendedIngredients" :key="ingredient.id">
       {{ingredient.name}} {{ingredient.amount}} {{ingredient.unit}} {{1}} SEK
-  
     </li>
     <router-link  to="/search">
       <button @click="add"> ADD TO MENU</button>
@@ -38,7 +36,7 @@
     data() {
       return {
         status: "LOADING",
-        id: -1,
+        id: modelInstance.getSelectedDishID(),
         dish: [],
         text: modelInstance.getNumberOfGuests(),
       }

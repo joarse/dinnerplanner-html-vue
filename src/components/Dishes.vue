@@ -2,7 +2,7 @@
   <div class="Dishes">
     <h3>Dishes</h3>
     <ul>
-      
+
       <em v-if='status === "LOADING"'>Loading...</em>
       <b v-if='dishes.length === 0 & status == "LOADED"'> Keywords and dish type do not match anything in the database</b>
       <b v-else-if='status === "ERROR"'>Failed to load data, please try again</b>
@@ -53,6 +53,7 @@
         .then(ret => {
           this.status = "CLICKED";
           console.log(ret);
+          modelInstance.setSelectedDishID(id);
         })
         .catch(() => {
           this.status = "ERROR"
