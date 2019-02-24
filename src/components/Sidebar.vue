@@ -12,9 +12,14 @@
       <br>
       Total number of guests: {{ numberOfGuests }}
     </p>
-    {{menu}}
+    <router-link to="/overview">
+      <button> GO TO OVERVIEW</button>
+    </router-link>
+
    <li v-for ="dish in menu">
-     dish.title
+     <p v-for ="thing in dish">
+       {{thing.title}}
+     </p>
    </li>
   </div>
 </template>
@@ -38,7 +43,7 @@ export default {
   data() {
     return {
       numberOfGuests: this.model.getNumberOfGuests(),
-      menu: {} // dont know which data structure this should be
+      menu: [] // dont know which data structure this should be
     };
   },
 
@@ -47,12 +52,16 @@ export default {
     // the compoented which will cause the component to re-render
     update() {
       this.numberOfGuests = this.model.getNumberOfGuests();
+      const dish = this.model.getMenu();
+      console.log(dish.id);
+      this.menu.push(dish);
       // update the menu here
     },
 
     // our handler for the input's on change event
     onDidChangeNumberOfGuests(e) {
       this.model.setNumberOfGuests(+e.target.value);
+      
     }
   }
 };
