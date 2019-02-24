@@ -12,15 +12,15 @@
       <br>
       Total number of guests: {{ numberOfGuests }}
     </p>
+
+    Menu:
+    <li v-for ="dish in menu" :key="dish.id">
+      {{ dish.id }}: {{ dish.title }}
+    </li>
     <router-link to="/overview">
       <button>Confirm Dinner</button>
     </router-link>
 
-   <li v-for ="dish in menu" :key="dish.id">
-     <p v-for ="thing in dish" :key="thing.id">
-       {{ thing.title }}
-     </p>
-   </li>
   </div>
 </template>
 
