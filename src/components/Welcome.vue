@@ -1,13 +1,20 @@
 <template>
 
   <div class="welcome">
-    <p>
-      {{ msg }}
-    </p>
 
-    <router-link to="/search">
-      <button>Start planning</button>
-    </router-link>
+    <div class="row">
+      <div class="col-12">
+        <p>
+          {{ msg }}
+        </p>
+        <br /><br />
+        <router-link to="/search">
+          <center><button class="btn btn-lg btn-primary">Start planning</button></center>
+        </router-link>
+      </div>
+    </div>
+
+
   </div>
 </template>
 
