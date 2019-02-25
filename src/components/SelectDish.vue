@@ -1,12 +1,15 @@
 <template>
+
   <div class="select-dish">
-    <h2>This is the Select Dish screen</h2>
+    <sidebar :model="this.model" />
+
+    <h2>Find a dish</h2>
     <!-- We pass the model as property to the Sidebar component -->
     <input type="text"
            :value="text"
            placeholder="Enter key words"
            @input="searchText">
-      <button @click="search">SEARCH</button>
+    <button @click="search">SEARCH</button>
 
     <select v-model="selected"
             @change="searchType">
@@ -18,14 +21,11 @@
       <option>Salad</option>
       <option>Bread</option>
       <option>Breakfast</option>
-      <option>Soup</option>
+      <option>Soup</option> 
       <option>Beverage</option>
       <option>Sauce</option>
       <option>Drinks</option>
     </select>
-    <p>Message is: {{ text }} and {{ selected }}</p>
-
-    <sidebar :model="this.model" />
     <dishes :model="this.model" />
   </div>
 </template>
