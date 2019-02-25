@@ -4,6 +4,8 @@
     <router-link to="/search">
       <button>Go back to the menu</button>
     </router-link>
+    <br />
+    <em v-if='status === "LOADING"'>Loading...</em>
     <h4>{{dish.title}}</h4>
     <li v-for="ingredient in dish.extendedIngredients" :key="ingredient.id">
       {{ingredient.name}} {{ingredient.amount}} {{ingredient.unit}} {{1}} SEK
