@@ -14,7 +14,7 @@
     </p>
 
     Menu:
-    <li v-for ="dish in menu" :key="dish.id">
+    <li v-for ="dish in menu" :key="dish.id" @click="removeFromMenu(dish.id)">
       {{ dish.id }}: {{ dish.title }}
     </li>
     <router-link to="/overview">
@@ -60,6 +60,9 @@ export default {
     onDidChangeNumberOfGuests(e) {
       this.model.setNumberOfGuests(+e.target.value);
 
+    },
+    removeFromMenu(id) {
+      this.model.removeDishFromMenu(id);
     }
   }
 };
