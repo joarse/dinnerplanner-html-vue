@@ -7,6 +7,13 @@
         <button>Go back to the menu</button>
       </router-link>
     </div>
+    <li v-for="dish in menu">
+      <!-- this is kind of weird-->
+
+      <img v-bind:src="dish.image" />
+      {{dish.title}}
+      {{dish.instructions}}
+    </li>
   </div>
 </template>
 
