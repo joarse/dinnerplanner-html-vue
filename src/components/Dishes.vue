@@ -1,20 +1,20 @@
 <template>
   <div class="Dishes">
     <h3>Dishes</h3>
-    <ul>
-
       <em v-if='status === "LOADING"'>Loading...</em>
       <b v-if='dishes.length === 0 & status == "LOADED"'> Keywords and dish type do not match anything in the database</b>
       <b v-else-if='status === "ERROR"'>Failed to load data, please try again</b>
-      <li v-for="dish in dishes" :id="dish.id" :key="dish.id">
-        {{ dish.title }}
-        <router-link to="/detail">
-          <div :id="dish.id" @click="selectDish">
-            <img v-bind:src="'https://spoonacular.com/recipeImages/' + dish.image" />
+      <div class="row col-md-12">
+        <div class="col" v-for="dish in dishes" :id="dish.id" :key="dish.id">
+          {{ dish.title }}
+          <router-link to="/detail">
+            <div :id="dish.id" @click="selectDish">
+              <img v-bind:src="'https://spoonacular.com/recipeImages/' + dish.image" />
+            </div>
+          </router-link>
           </div>
-        </router-link>
-      </li>
-    </ul>
+      </div>
+
   </div>
 </template>
 
@@ -71,4 +71,6 @@
     width: 3cm;
     height: 3cm;
   }
+  
+ 
 </style>
