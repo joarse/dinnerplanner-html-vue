@@ -1,19 +1,32 @@
 <template>
   <div class="print">
-    <h3>print</h3>
-    <div>
-      dinner for {{ numberOfGuests }}
-      <router-link to="/search">
-        <button>Go back to the menu</button>
-      </router-link>
+    <h3>Dinner for {{ numberOfGuests }} people</h3>
+    <div class="row">
+      <div class="col-md-12" id="back">
+        <router-link to="/search">
+          <button class="btn btn-primary">Go back to the menu</button>
+        </router-link>
+      </div>
     </div>
-    <li v-for="dish in menu" :key="dish.id">
-      <!-- this is kind of weird-->
-      <img v-bind:src="dish.image" />
-      {{dish.title}}
-      {{dish.instructions}}
-    </li>
-  </div>
+    <div class="row" v-for="dish in menu" :key="dish.id">
+      <div class="col-md-2">
+        <img v-bind:src="dish.image" />
+      </div>
+      <div class="col-md-4">
+        <h3> {{dish.title}}</h3>
+        <br />
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
+      <div class="col-md-6">
+        <h3> Preperations</h3>
+        
+        <p v-if="dish.instructions"> {{dish.instructions}}</p>
+        <p v-else> Oh, sorry, no instructions found</p>
+      </div>
+    </div>
+
+     
+    </div>
 </template>
 
 <script>
@@ -52,3 +65,10 @@
     }
   }
 </script>
+
+<style>
+  #back {
+    float: right;
+    text-align: right;
+  }
+</style>
