@@ -113,6 +113,7 @@ class DinnerModel extends ObservableModel {
    */
   addDishToMenu(dish) {
     this._menu[dish.id] = dish;
+    localStorage.setItem('menu', JSON.stringify(this._menu));
     this.notifyObservers("addDishToMenu");
   }
 
@@ -122,6 +123,7 @@ class DinnerModel extends ObservableModel {
    */
   removeDishFromMenu(id) {
     delete this._menu[id];
+    localStorage.setItem('menu', JSON.stringify(this._menu));
     this.notifyObservers("removeDishFromMenu");
   }
 
@@ -130,6 +132,9 @@ class DinnerModel extends ObservableModel {
    * @returns {object}
    */
   getMenu() {
+    if (localStorage.getItem('menu')) {
+      this._menu = JSON.parse(localStorage.getItem('menu'));
+    }
     return this._menu;
   }
 
