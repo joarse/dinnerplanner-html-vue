@@ -1,4 +1,5 @@
 <template>
+
   <div class="welcome">
     <p>
       {{ msg }}
@@ -14,7 +15,7 @@
   export default {
     data() {
       return {
-        msg: 'Welcome to the dinner planner Vue Startup code!'
+        msg: 'Welcome to the dinner planner Vue Startup code! '
       }
     }
   }
@@ -23,7 +24,7 @@
 <!-- Example of styling Vue components -->
 <!-- With the scoped attribute, CSS will apply to elements of the current component only -->
 <style scoped>
-  button {
-    color: blue;
+  .welcome{
+    text-align: center;
   }
 </style>

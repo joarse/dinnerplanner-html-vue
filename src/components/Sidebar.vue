@@ -1,22 +1,30 @@
 <template>
   <div class="sidebar">
-    <h3>This is the sidebar</h3>
+    <h3>My dinner</h3>
     <p>
       People:
       <input
+        class="guestInput"
         type="number"
         :value="numberOfGuests"
         @input="onDidChangeNumberOfGuests"
         @change="onDidChangeNumberOfGuests"
       >
       <br>
-      Total number of guests: {{ numberOfGuests }}
     </p>
+    <table>
+      <tr class="tableHeader">
+        <th>Dish name</th>
+        <th>Cost</th>
+      </tr>
+      <tr class="tableBody" v-for="dish in menu" :key="dish.id"  @click="removeFromMenu(dish.id)" >
+        <th>{{dish.title}}</th> 
+        <th> cost</th>
+      </tr>
+    </table>
+   
 
-    Menu:
-    <li v-for ="dish in menu" :key="dish.id" @click="removeFromMenu(dish.id)">
-      {{ dish.id }}: {{ dish.title }}
-    </li>
+
     <router-link to="/overview">
       <button v-if="Object.values(menu).length !== 0">Confirm Dinner</button>
     </router-link>
@@ -67,3 +75,27 @@ export default {
   }
 };
 </script>
+
+
+<style>
+
+  .sidebar {
+    float: left;
+    width: 20%;
+    height: 100%;
+  }
+  .guestInput{
+    float: right;
+    width: 60%;
+    margin-right: 10%;
+  }
+  .tableBody{
+    background-color: lightgray;
+  }
+  .tableHeader{
+    background-color: darkgray;
+  }
+
+  
+
+</style>
