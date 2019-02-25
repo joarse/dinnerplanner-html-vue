@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <h1 id="heading">Dinner Planner</h1>
+    <div class="jumbotron" style="padding: 10px; margin-bottom: 50px">
+      <div class="container">
+        <h1 class="text-center">Dinner planner</h1>
+      </div>
+    </div>
     <router-view />
   </div>
 </template>
@@ -11,16 +15,4 @@ export default {
 }
 </script>
 
-<style>
-  #app{
-    text-align: center;
-    height: 100%;
-    width: 100%;
-  }
-  #heading{
-    background-color: gray;
-    height: 80px;
-    margin-top: 10px;
-    padding-top: 20px;
-  }
-</style>
+
