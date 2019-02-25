@@ -8,7 +8,7 @@
       </router-link>
     </div>
 
-    <li v-for="dish in menu">
+    <li v-for="dish in menu" :key="dish.id">
       {{dish.title}}
     </li>
     <router-link to="/print">
