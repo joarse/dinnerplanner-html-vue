@@ -1,19 +1,33 @@
 <template>
   <div class="overview">
-    <h3>Overview</h3>
-    <div>
-      dinner for {{ numberOfGuests }}
-      <router-link to="/search">
-        <button>Go back to the menu</button>
-      </router-link>
-    </div>
+    <h3> Dinner for {{ numberOfGuests }} people</h3>
+    <div class="row">
 
-    <li v-for="dish in menu" :key="dish.id">
-      {{dish.title}}
-    </li>
-    <router-link to="/print">
-      <button>PRINT OUT MENU</button>
-    </router-link>
+      <div id="back" class="col-md-12">
+        <router-link to="/search">
+          <button class="btn btn-primary">Go back to the menu</button>
+        </router-link>
+      </div>
+
+      <div class="container text-center" id="dishFinishedView">
+        <div class="row">
+          <div class="col-md-4" v-for="dish in menu" :key="dish.id">
+
+            <img v-bind:src="dish.image" />
+            <br />
+            {{dish.title}}
+            <br />
+            <p>Price: cost SEK</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="mx-auto">
+        <router-link to="/print">
+          <button class="btn btn-primary">PRINT OUT MENU</button>
+        </router-link>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -56,3 +70,11 @@
     }
   }
 </script>
+
+<style>
+  #back {
+    float: right;
+    text-align:right;
+  }
+
+</style>
