@@ -2,7 +2,6 @@
   <div class="overview">
     <h3> Dinner for {{ numberOfGuests }} people</h3>
     <div class="row">
-
       <div id="back" class="col-md-12">
         <router-link to="/search">
           <button class="btn btn-primary">Go back to the menu</button>
@@ -22,13 +21,15 @@
 
         </div>
       </div>
+    </div>
+    <div class="row">
       <div class="mx-auto">
         <router-link to="/print">
           <button class="btn btn-primary">PRINT OUT MENU</button>
         </router-link>
       </div>
     </div>
-  </div>
+   </div>
 </template>
 
 <script>
