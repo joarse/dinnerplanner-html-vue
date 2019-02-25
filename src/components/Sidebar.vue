@@ -18,7 +18,7 @@
       {{ dish.id }}: {{ dish.title }}
     </li>
     <router-link to="/overview">
-      <button>Confirm Dinner</button>
+      <button :disabled="disabled==1 ? true: false">Confirm Dinner</button>
     </router-link>
 
   </div>
@@ -37,13 +37,20 @@ export default {
   // good place to remove observer
   beforeDestroy() {
     this.model.removeObserver(this);
+    },
+
+  mounted() {
+    if (Object.values(this.menu).length !== 0) {
+      this.disabled = 0;
+    }
   },
 
   // we define and initalise the data we want to use and modify in the component
   data() {
     return {
       numberOfGuests: this.model.getNumberOfGuests(),
-      menu: this.model.getMenu()
+      menu: this.model.getMenu(),
+      disabled: 1,
     };
   },
 
