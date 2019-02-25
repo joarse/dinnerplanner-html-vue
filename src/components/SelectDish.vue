@@ -64,6 +64,7 @@
         this.model.setDishType(this.selected);
         // Emit event so model fetches new data
         // and dishes gets updated
+        location.reload();
       },
       update() {
         this.text = this.model.getQuery();
